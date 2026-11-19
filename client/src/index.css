@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  line-height: 1.5;
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #0b0d12;
+  color: #e5e7eb;
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-white/[0.07] bg-white/[0.03] backdrop-blur-xl;
+  }
+  .input {
+    @apply w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white
+      placeholder:text-gray-500 transition focus:border-indigo-400/60 focus:outline-none
+      focus:ring-4 focus:ring-indigo-500/15;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-500 px-4 py-3 text-sm
+      font-semibold text-white shadow-lg shadow-indigo-500/20 transition hover:bg-indigo-400
+      active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 disabled:active:scale-100;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm text-gray-400
+      transition hover:bg-white/5 hover:text-white disabled:opacity-50;
+  }
+  .icon-btn {
+    @apply inline-flex h-8 w-8 items-center justify-center rounded-lg text-gray-400 transition
+      hover:bg-white/10 hover:text-white disabled:opacity-40;
+  }
+}
+
+/* Markdown rendering for assistant replies */
+.markdown {
+  @apply text-[0.925rem] leading-relaxed text-gray-200;
+}
+.markdown > * + * { @apply mt-3; }
+.markdown h1, .markdown h2, .markdown h3 { @apply font-semibold text-white; }
+.markdown h1 { @apply text-lg; }
+.markdown h2 { @apply text-base; }
+.markdown h3 { @apply text-sm uppercase tracking-wide text-gray-300; }
+.markdown strong { @apply font-semibold text-white; }
+.markdown a { @apply text-indigo-300 underline underline-offset-2; }
+.markdown ul { @apply list-disc space-y-1 pl-5; }
+.markdown ol { @apply list-decimal space-y-1 pl-5; }
+.markdown li::marker { @apply text-gray-500; }
+.markdown code { @apply rounded bg-white/10 px-1.5 py-0.5 font-mono text-[0.85em]; }
+.markdown pre { @apply overflow-x-auto rounded-lg bg-black/40 p-3; }
+.markdown pre code { @apply bg-transparent p-0; }
+.markdown blockquote { @apply border-l-2 border-indigo-400/50 pl-3 text-gray-400; }
+.markdown table { @apply w-full border-collapse text-sm; }
+.markdown th, .markdown td { @apply border border-white/10 px-2 py-1 text-left; }
+.markdown th { @apply bg-white/5; }
+
+/* Subtle scrollbars */
+.scroll-thin { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.12) transparent; }
+
+@keyframes blink { 0%, 80%, 100% { opacity: .2 } 40% { opacity: 1 } }
+.dot { animation: blink 1.4s infinite both; }
+.dot:nth-child(2) { animation-delay: .2s; }
+.dot:nth-child(3) { animation-delay: .4s; }
